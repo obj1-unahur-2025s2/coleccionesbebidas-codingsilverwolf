@@ -51,7 +51,7 @@ object licuado{
   }
   // Si medimos en cm3 deberíamos dividir por 1000 la cantidad. Así la cantidad viene en litros.
   method rendimiento(cantidad){
-    return nutrientes.sum()*cantidad
+    return nutrientes.sum()*cantidad/1000
   }
   
 }
@@ -70,23 +70,28 @@ object aguaSaborizada {
 
 object coctel {
   const ingredientes =[]
+  
   method agregar(unIngrediente) {
     ingredientes.add(unIngrediente)
   }
   method rendimiento(cantidad) {
-    
+    var producto = 1
+    ingredientes.forEach({bebida => producto = producto*bebida.rendimiento(cantidad/ingredientes.size())})
+    return producto
   }
+  
 }
+// tengo dudas sobre la legibilidad del código. ¿Hubiese sido menor definir cantidadDeIngredientes?
 
 
 object manzana {
-  method nutrientes {
+  method nutrientes () {
     return 4
   }
 }
 
 object mandarina {
-  method nutrientes {
+  method nutrientes () {
     return 5
   }
 }
