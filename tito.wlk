@@ -75,10 +75,39 @@ object coctel {
     ingredientes.add(unIngrediente)
   }
   method rendimiento(cantidad) {
-    var producto = 1
-    ingredientes.forEach({bebida => producto = producto*bebida.rendimiento(cantidad/ingredientes.size())})
+    var rendimientoTotal = 1
+    ingredientes.forEach({bebida => rendimientoTotal *=bebida.rendimiento(cantidad/ingredientes.size())})
     return producto
   }
+  
+// Clase lunes 15
+// mensajes.filter({i=> i.size() >3}) me devuelve otra lista filtrada. Lo guarda en memoria. 
+
+
+/*
+Ejemplos con fold
+
+const palabras =['Hola', 'como', 'estas']
+
+palabras.first().size()
+palabras.get(1)
+
+palabras.fold(0, {acum, item => acum + item.size()}) 
+
+Tambien funciona si tenemos un conjunto
+
+word = #{'Hola', 'como', 'estas, como}
+
+
+word.fold(0, {acum, item => acum + item.size()}) 
+method rendimiento(cantidad){
+  return ingredientes.fold(1, {
+    rendimientoTotal, i => rendimientoTotal * i.rendimiento(cantidad/ingredientes.size())
+  })
+}
+
+Si tengo como elementos 14 naves espaciales y las quiero mover, hago forEach. Trato de usar forEach para enviar el mismo mensaje a cada elemento. "No proceso"
+*/
   
 }
 // tengo dudas sobre la legibilidad del código. ¿Hubiese sido menor definir cantidadDeIngredientes?

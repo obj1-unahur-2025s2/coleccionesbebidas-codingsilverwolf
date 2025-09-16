@@ -54,6 +54,12 @@ describe "test de tito" {
     }
     // (0.1*50*0.9**50)*7
 
-    
+    test "Tito consume un cóctel de whisky, tereré, agua saborizada de whisky"{
+      aguaSaborizada.saborizar(whisky)
+      coctel.agregar(aguaSaborizada)
+      coctel.agregar(whisky)
+      coctel.agregar(terere)
+      assert.equals(0.9**20*2 *(1+0.9**5), coctel.rendimiento(60))
+    }
 
 }
